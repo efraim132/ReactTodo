@@ -3,6 +3,7 @@ import {MarkGithubIcon} from '@primer/octicons-react'
 import TodoActionMenu from './todoActionMenu'
 import './App.css'
 import TodoList from './todoList'
+import { InlineMessage } from '@primer/react/experimental'
 
 export default function App() {
   return ( 
@@ -22,6 +23,9 @@ export default function App() {
       <Stack direction="vertical">
         <h3>Current Tasks</h3>
         <TodoList />
+        <InlineMessage variant="warning" sx={{ width: 'fit-content', margin: '10px auto' }}>
+          Warning! Features are not fully implemented
+        </InlineMessage>
         <TodoActionMenu />
       </Stack>
 </Box>
