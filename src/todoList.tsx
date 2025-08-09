@@ -1,4 +1,3 @@
-import React from 'react'
 import {RelativeTime} from '@primer/react'
 import {Table, DataTable} from '@primer/react/experimental'
 
