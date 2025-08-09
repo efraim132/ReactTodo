@@ -2,7 +2,7 @@ import { ActionMenu } from "@primer/react"
 import { ActionList } from "@primer/react"
 
 
-function MyActionMenu() {
+function TodoActionMenu() {
     return(
 <ActionMenu>
   <ActionMenu.Button>Open menu</ActionMenu.Button>
@@ -10,27 +10,27 @@ function MyActionMenu() {
     <ActionList>
       <ActionList.Item
         onSelect={() => {
-          alert('Item one clicked')
+          alert('Reset clicked')
         }}
       >
-        Item one
+        Reset
       </ActionList.Item>
       <ActionList.Item
         onSelect={() => {
-          alert('Item two clicked')
+          alert('Return to default clicked')
         }}
       >
-        Item two
+        Return to default
       </ActionList.Item>
       <ActionList.Item
         onSelect={() => {
-          alert('Item three clicked')
+          alert('Add new task clicked')
         }}
       >
-        Item three
+        Add new task
       </ActionList.Item>
     </ActionList>
   </ActionMenu.Overlay>
 </ActionMenu>
 )}
-export default MyActionMenu;
+export default TodoActionMenu;

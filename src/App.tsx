@@ -1,7 +1,8 @@
 import {Button, Box, Heading, Stack} from '@primer/react'
 import {MarkGithubIcon} from '@primer/octicons-react'
-import MyActionMenu from './myActionMenu'
+import TodoActionMenu from './todoActionMenu'
 import './App.css'
+import TodoList from './todoList'
 
 export default function App() {
   return ( 
@@ -16,11 +17,12 @@ export default function App() {
   }}
 >
   <Box className="mb-2" as="h2" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <MarkGithubIcon size={64} /> Primer + Vite + TS
+        <MarkGithubIcon size={64} /> Efraim's TODO App
       </Box>
       <Stack direction="vertical">
-        <Button onClick={() => alert('Hello, Primer!')}>Click me</Button>
-        <MyActionMenu />
+        <h3>Current Tasks</h3>
+        <TodoList />
+        <TodoActionMenu />
       </Stack>
 </Box>
       
