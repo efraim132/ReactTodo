@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 
+// Import base primer CSS variables
+import '@primer/primitives/dist/css/primitives.css'
 // pick a theme (light shown here)
 import '@primer/primitives/dist/css/functional/themes/light.css'
 
