@@ -1,4 +1,4 @@
-import {Button, Box, Heading, Stack} from '@primer/react'
+import {Box, Stack} from '@primer/react'
 import {MarkGithubIcon} from '@primer/octicons-react'
 import TodoActionMenu from './todoActionMenu'
 import './App.css'
