@@ -35,6 +35,10 @@ export default function App() {
     toggleEditingMode();
   }
 
+  function clearTasks() {
+    setData([]);
+  }
+
   const now = Date.now();
   const Second = 1000;
   const Minute = 60 * Second;
@@ -102,7 +106,11 @@ export default function App() {
         </Box>
 
         {!editingMode ? (
-          <TodoDisplay data={{ data }} setEditingMode={toggleEditingMode} />
+          <TodoDisplay
+            data={{ data }}
+            setEditingMode={toggleEditingMode}
+            onClear={clearTasks}
+          />
         ) : (
           <TaskEditor
             onNewTask={onNewTaskHandler}

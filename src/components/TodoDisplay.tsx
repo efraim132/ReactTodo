@@ -10,9 +10,10 @@ import "./TodoDisplay.css";
 interface ToDoDisplayProps {
   data: todoProps;
   setEditingMode: () => void;
+  onClear: () => void;
 }
 
-function TodoDisplay({ data, setEditingMode }: ToDoDisplayProps) {
+function TodoDisplay({ data, setEditingMode, onClear }: ToDoDisplayProps) {
   let [incompleteAlert, setIncompleteAlert] = useState(false);
 
   return (
@@ -21,14 +22,10 @@ function TodoDisplay({ data, setEditingMode }: ToDoDisplayProps) {
         <h3>Current Tasks</h3>
         <TodoList data={data.data} />
         <div className="controlsHolder">
-          <TodoActionMenu toggleEditModeFunc={setEditingMode} />
-          <SizedInlineMessage visible={incompleteAlert}>
-            Some Features are not available right now
-          </SizedInlineMessage>
-
-          <Button onClick={() => setIncompleteAlert(!incompleteAlert)}>
-            Show Alert!
-          </Button>
+          <TodoActionMenu
+            toggleEditModeFunc={setEditingMode}
+            clearTasksFunc={onClear}
+          />
         </div>
       </Stack>
     </>

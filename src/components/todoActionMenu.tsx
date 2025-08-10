@@ -3,9 +3,10 @@ import { ActionList } from "@primer/react";
 
 interface Props {
   toggleEditModeFunc: () => void;
+  clearTasksFunc: () => void;
 }
 
-function TodoActionMenu({ toggleEditModeFunc }: Props) {
+function TodoActionMenu({ toggleEditModeFunc, clearTasksFunc }: Props) {
   return (
     <ActionMenu>
       <ActionMenu.Button>Open menu</ActionMenu.Button>
@@ -13,7 +14,7 @@ function TodoActionMenu({ toggleEditModeFunc }: Props) {
         <ActionList>
           <ActionList.Item
             onSelect={() => {
-              alert("Reset clicked");
+              clearTasksFunc();
             }}
           >
             Reset
