@@ -8,6 +8,7 @@ import { useState } from "react";
 import SizedInlineMessage from "./components/SizedInlineMessage";
 import TodoDisplay from "./components/TodoDisplay";
 import TaskEditor from "./components/TaskEditor";
+import type { TodoItem } from "./types/TodoItem";
 
 export default function App() {
   let [editingMode, setEditingMode] = useState(false);
@@ -20,7 +21,7 @@ export default function App() {
   function onNewTaskHandler(name: String, task: String, time: number): void {
     const dataID = (data.length > 0 ? data[data.length - 1].id : 0) + 1;
 
-    let dataVar = {
+    let dataVar: TodoItem = {
       id: dataID,
       name: name as string,
       task: task as string,
@@ -42,14 +43,7 @@ export default function App() {
   const Week = 7 * Day;
   const Month = 4 * Week;
 
-  const [data, setData] = useState<
-    Array<{
-      id: number;
-      name: string;
-      task: string;
-      updatedAt: number;
-    }>
-  >([
+  const [data, setData] = useState<TodoItem[]>([
     //Default data
     {
       id: 1,

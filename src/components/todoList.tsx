@@ -1,13 +1,9 @@
 import { RelativeTime } from "@primer/react";
 import { Table, DataTable } from "@primer/react/experimental";
+import type { TodoItem } from "../types/TodoItem";
 
 export interface todoProps {
-  data: Array<{
-    id: number;
-    name: string;
-    task: String;
-    updatedAt: number;
-  }>;
+  data: Array<TodoItem>;
 }
 
 function TodoList({ data }: todoProps) {
