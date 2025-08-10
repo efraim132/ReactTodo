@@ -1,5 +1,4 @@
 import { InlineMessage } from "@primer/react/experimental";
-import React from "react";
 
 interface Props {
   visible: boolean;

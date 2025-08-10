@@ -1,8 +1,6 @@
-import { Button, Stack } from "@primer/react";
-import React, { useState } from "react";
+import { Stack } from "@primer/react";
 import TodoList from "./todoList";
 import TodoActionMenu from "./todoActionMenu";
-import SizedInlineMessage from "./SizedInlineMessage";
 import type { todoProps } from "./todoList";
 
 import "./TodoDisplay.css";
@@ -14,8 +12,6 @@ interface ToDoDisplayProps {
 }
 
 function TodoDisplay({ data, setEditingMode, onClear }: ToDoDisplayProps) {
-  let [incompleteAlert, setIncompleteAlert] = useState(false);
-
   return (
     <>
       <Stack direction="vertical">

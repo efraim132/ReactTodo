@@ -1,7 +1,6 @@
 import { RelativeTime } from "@primer/react";
 import { Table, DataTable } from "@primer/react/experimental";
 import type { TodoItem } from "../types/TodoItem";
-import { useEffect, useState } from "react";
 
 export interface todoProps {
   data: Array<TodoItem>;
