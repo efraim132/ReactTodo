@@ -5,12 +5,8 @@ export interface todoProps {
   data: Array<{
     id: number;
     name: string;
-    type: "Public" | "Internal";
+    task: String;
     updatedAt: number;
-    securityFeatures: {
-      dependabot: string;
-      codeScanning: string;
-    };
   }>;
 }
 
@@ -22,28 +18,26 @@ function TodoList({ data }: todoProps) {
         data={data}
         columns={[
           {
-            header: "Repository",
+            header: "Author",
             field: "name",
             rowHeader: true,
+            width: "growCollapse",
+            maxWidth: "80px",
           },
           {
-            header: "Type",
-            field: "type",
+            header: "Task",
+            field: "task",
+            width: "grow",
+            minWidth: "300px",
           },
           {
             header: "Updated",
             field: "updatedAt",
+            width: "growCollapse",
+            maxWidth: "100px",
             renderCell: (row) => {
               return <RelativeTime date={new Date(row.updatedAt)} />;
             },
-          },
-          {
-            header: "Dependabot",
-            field: "securityFeatures.dependabot",
-          },
-          {
-            header: "Code scanning",
-            field: "securityFeatures.codeScanning",
           },
         ]}
       />

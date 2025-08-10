@@ -1,0 +1,9 @@
+.buttonHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+Button {
+    width: fit-content;
+}

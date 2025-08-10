@@ -7,12 +7,31 @@ import { InlineMessage } from "@primer/react/experimental";
 import { useState } from "react";
 import SizedInlineMessage from "./components/SizedInlineMessage";
 import TodoDisplay from "./components/TodoDisplay";
+import TaskEditor from "./components/TaskEditor";
 
 export default function App() {
   let [editingMode, setEditingMode] = useState(false);
 
   function toggleEditingMode() {
     setEditingMode(!editingMode);
+    console.log(editingMode);
+  }
+
+  function onNewTaskHandler(name: String, task: String, time: number): void {
+    const dataID = (data.length > 0 ? data[data.length - 1].id : 0) + 1;
+
+    let dataVar = {
+      id: dataID,
+      name: name as string,
+      task: task as string,
+      updatedAt: time,
+    };
+
+    console.log("New ID", dataID);
+    const newData = [...data, dataVar];
+    setData(newData);
+    console.log(dataVar);
+    toggleEditingMode();
   }
 
   const now = Date.now();
@@ -23,94 +42,52 @@ export default function App() {
   const Week = 7 * Day;
   const Month = 4 * Week;
 
-  const data: Array<{
-    id: number;
-    name: string;
-    type: "Public" | "Internal";
-    updatedAt: number;
-    securityFeatures: {
-      dependabot: string;
-      codeScanning: string;
-    };
-  }> = [
+  const [data, setData] = useState<
+    Array<{
+      id: number;
+      name: string;
+      task: string;
+      updatedAt: number;
+    }>
+  >([
+    //Default data
     {
       id: 1,
-      name: "codeql-dca-worker",
-      type: "Internal",
-      updatedAt: now,
-      securityFeatures: {
-        dependabot: "Alerts",
-        codeScanning: "Report secrets",
-      },
+      name: "Efraim",
+      task: "Do Laundry",
+      updatedAt: now - 2 * Day,
     },
     {
       id: 2,
-      name: "aegir",
-      type: "Public",
-      updatedAt: now - 5 * Minute,
-      securityFeatures: {
-        dependabot: "Alerts",
-        codeScanning: "Report secrets",
-      },
+      name: "Alice",
+      task: "Buy Groceries",
+      updatedAt: now - 3 * Hour,
     },
     {
       id: 3,
-      name: "strapi",
-      type: "Public",
-      updatedAt: now - 1 * Hour,
-      securityFeatures: {
-        dependabot: "",
-        codeScanning: "",
-      },
+      name: "Bob",
+      task: "Prepare Presentation",
+      updatedAt: now - 1 * Week,
     },
     {
       id: 4,
-      name: "codeql-ci-nightlies",
-      type: "Public",
-      updatedAt: now - 6 * Hour,
-      securityFeatures: {
-        dependabot: "Alerts",
-        codeScanning: "",
-      },
+      name: "Charlie",
+      task: "Clean the House",
+      updatedAt: now - 5 * Day,
     },
     {
       id: 5,
-      name: "dependabot-updates",
-      type: "Public",
-      updatedAt: now - 1 * Day,
-      securityFeatures: {
-        dependabot: "",
-        codeScanning: "",
-      },
+      name: "Diana",
+      task: "Finish Homework",
+      updatedAt: now - 12 * Hour,
     },
     {
       id: 6,
-      name: "tsx-create-react-app",
-      type: "Public",
-      updatedAt: now - 1 * Week,
-      securityFeatures: {
-        dependabot: "",
-        codeScanning: "",
-      },
+      name: "Eve",
+      task: "Plan Vacation",
+      updatedAt: now - 2 * Month,
     },
-    {
-      id: 7,
-      name: "bootstrap",
-      type: "Public",
-      updatedAt: now - 1 * Month,
-      securityFeatures: { dependabot: "Alerts", codeScanning: "" },
-    },
-    {
-      id: 8,
-      name: "docker-templates",
-      type: "Public",
-      updatedAt: now - 3 * Month,
-      securityFeatures: {
-        dependabot: "Alerts",
-        codeScanning: "",
-      },
-    },
-  ];
+  ]);
 
   return (
     <>
@@ -130,7 +107,14 @@ export default function App() {
           <MarkGithubIcon size={64} /> Efraim's TODO App
         </Box>
 
-        <TodoDisplay data={{ data }} setEditingMode={toggleEditingMode} />
+        {!editingMode ? (
+          <TodoDisplay data={{ data }} setEditingMode={toggleEditingMode} />
+        ) : (
+          <TaskEditor
+            onNewTask={onNewTaskHandler}
+            setEditingMode={toggleEditingMode}
+          />
+        )}
       </Box>
     </>
   );

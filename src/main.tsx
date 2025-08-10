@@ -1,15 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
 
 // Import base primer CSS variables
-import '@primer/primitives/dist/css/primitives.css'
+import "@primer/primitives/dist/css/primitives.css";
 // pick a theme (light shown here)
-import '@primer/primitives/dist/css/functional/themes/light.css'
+import "@primer/primitives/dist/css/functional/themes/light.css";
 
-import {ThemeProvider, BaseStyles} from '@primer/react'
+import "./myAlignment.css";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+import { ThemeProvider, BaseStyles } from "@primer/react";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
       <BaseStyles>
@@ -17,4 +19,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </BaseStyles>
     </ThemeProvider>
   </React.StrictMode>
-)
+);
